@@ -1,6 +1,14 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, Row, Table } from "@tanstack/react-table"
+import { Ellipsis, Pencil, Trash } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export type Payment = {
   id: string
@@ -9,66 +17,131 @@ export type Payment = {
   email: string
 }
 
-export const columns: ColumnDef<any>[] = [
+interface ProductType {
+   id: string;
+   name: string;
+   description: string;
+   color?: string;
+   size?: string;
+   category?: string;
+   price?: number;
+   stock?: number;
+   code?: string;
+   image?: string;
+   action?: string;
+}
+
+
+const ActionCell = ({ row, table }: { row: Row<ProductType>; table: Table<ProductType> }) => {
+  return (
+    <div className="flex w-full justify-center">
+      <DropdownMenu>
+        <DropdownMenuTrigger className="cursor-pointer">
+          <Ellipsis className="size-6" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="shadow-xl rounded-lg">
+          <DropdownMenuItem
+            className="cursor-pointer text-primary"
+            onClick={() => {
+              console.log("edit")
+            }}
+          >
+            <Pencil className="size-4" />
+            Edit
+          </DropdownMenuItem>
+          <Separator />
+          <DropdownMenuItem
+            className="cursor-pointer text-red-500"
+            onClick={() => {
+              console.log("delete")
+            }}
+          >
+            <Trash className="size-4" />
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  );
+};
+
+export const columns: ColumnDef<{
+  id: string;
+  name: string;
+  description: string;
+  color?: string;
+  size?: string;
+  category?: string;
+  price?: number;
+  stock?: number;
+  code?: string;
+}>[] = [
   {
     accessorKey: "id",
-    header: "Product ID",
+    header: "ID",
     cell: ({ row }) => {
       return <div>{row.original.id}</div>
-    }
+    },
   },
   {
     accessorKey: "name",
     header: "Product Name",
     cell: ({ row }) => {
       return <div>{row.original.name}</div>
-    }
+    },
+ 
   },
   {
-    accessorKey: "description",
-    header: "Product Description",
+    accessorKey: "code",
+    header: "Code",
     cell: ({ row }) => {
-      return <div>{row.original.description}</div>
-    }
+      return <div>{row.original.code}</div>
+    },
   },
-
   {
-    accessorKey:"color",
-    header: "Product Color",
+    accessorKey: "image",
+    header: "Image",
+    cell: ({ row }) => {
+      return <div>{row.original.name}</div>
+    },
+  },
+  {
+    accessorKey: "color" ,
+    header: "Color",
     cell: ({ row }) => {
       return <div>{row.original.color}</div>
-    }
-
-  },
-  {
-    accessorKey: "size",
-    header: "Product Size",
-    cell: ({ row }) => {
-      return <div>{row.original.size}</div>
-    }
-  },
-  {
-    accessorKey: "category",
-    header: "Product Category",
-    cell: ({ row }) => {
-      return <div>{row.original.category}</div>
-    }
+    },
   },
 
   {
-    accessorKey: "price",
-    header: "Product Price",
+    accessorKey: "description",
+    header: "Description",
+    cell: ({ row }) => {
+      return <div className="truncate max-w-50">{row.original.description}</div>
+    },
+
+  },
+   
+  {
+    accessorKey: "Price",
+    header: "Price",
     cell: ({ row }) => {
       return <div>{row.original.price}</div>
-    }
+    },
   },
-
   {
-    accessorKey: "stock",
-    header: "Product Stock",
-    cell: ({ row }) => {
-      return <div>{row.original.stock}</div>
-    }
+    accessorKey: "Category" ,
+    header: "Category",
+    cell: ({ row }) => {  
+     return <div>{row.original.category}</div>
+    },
   },
-  
+  {
+    accessorKey: "action",
+    header: "Action",
+    cell: ({ row, table }) => {
+        return <ActionCell row={row} table={table} />
+    },
+  }
+
 ]

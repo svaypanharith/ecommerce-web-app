@@ -1,9 +1,9 @@
-import Layout from "@/component/sidebar/layout";
-
+"use client";
+import SidebarLayout from "@/app/layout/SidebarLayout";
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <Layout>
-            {children}
-        </Layout>
-    )
+  return (
+    <SidebarLayout>
+      {children}
+    </SidebarLayout>
+  );
 }

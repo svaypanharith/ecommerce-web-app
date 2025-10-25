@@ -6,7 +6,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import TableWrapper from "../share/tablewrapper"
+import TableWrapper from "../../share/tablewrapper"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {  useCallback } from "react"
@@ -25,7 +25,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[]
 }
 
-export default function DataTable<TData, TValue>({
+export default function CategoryTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -36,8 +36,8 @@ export default function DataTable<TData, TValue>({
   })
   const router = useRouter();
 
-  const onClickOpendialog = useCallback(() => {
-    router.push("/dashboard/product/addproduct"); 
+  const onClickAddCategory = useCallback(() => {
+    router.push("/dashboard/category/addcategory"); 
   }, [router]);
   
   return (
@@ -47,7 +47,7 @@ export default function DataTable<TData, TValue>({
             <Input type="text" placeholder="Search" className="w-full" />
         </div>
         <div className="w-full flex flex-row justify-end">
-            <Button variant="outline" onClick={onClickOpendialog}>Add Product</Button>
+            <Button variant="outline" onClick={onClickAddCategory}>Add Category</Button>
         </div>
      </div>
      <TableWrapper >
