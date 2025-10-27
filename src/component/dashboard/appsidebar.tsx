@@ -10,7 +10,9 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import {  LayoutDashboard, List, Package } from "lucide-react";
+
+import {  LayoutDashboard, List, Package , User , Palette , HardDrive, ShoppingCart} from "lucide-react";
+
 
 export function AppSidebar() {
 
@@ -34,7 +36,25 @@ export function AppSidebar() {
     {
       title: "Customer",
       url: "/dashboard/customer",
-    }
+      icon: User
+    },
+     {
+      title: "Color",
+      url : "/dashboard/color",
+      icon: Palette,
+     }, 
+     {
+      title: "Storage",
+      url : "/dashboard/storage",
+      icon: HardDrive,
+     },
+     {
+      title: "Order",
+      url: "/dashboard/order",
+      icon: ShoppingCart,
+     }
+
+
 
   ];
   
@@ -52,16 +72,17 @@ export function AppSidebar() {
             <SidebarSeparator />
             <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+  {items.map((item) => (
+    <SidebarMenuItem key={item.title}>
+      <SidebarMenuButton asChild>
+        <a href={item.url} className="flex items-center gap-3">
+          <item.icon className="w-5 h-5" />
+          <span>{item.title}</span>
+        </a>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  ))}
+</SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </div>

@@ -4,12 +4,16 @@ import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MInput from "@/component/m-ui/m-input";
+import { useRouter } from "next/navigation"
 
 export default function LoginForm() {
 
+  const router = useRouter();
+
  const onSubmit = useCallback(() => {
      console.log("Submit Test Data ")
- }, []);
+     router.push("/dashboard");
+ }, [router]);
 
   return (
     <Card 

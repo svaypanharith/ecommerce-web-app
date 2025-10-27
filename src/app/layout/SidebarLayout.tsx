@@ -12,7 +12,6 @@ interface SidebarLayoutProps {
 
 export default function SidebarLayout({ children }: SidebarLayoutProps) {
   return (
-   
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
