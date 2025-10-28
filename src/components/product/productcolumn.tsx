@@ -65,7 +65,7 @@ const ActionCell = ({ row, table }: { row: Row<ProductType>; table: Table<Produc
   );
 };
 
-export const columns: ColumnDef<{
+export const productColumns: ColumnDef<{
   id: string;
   name: string;
   description: string;

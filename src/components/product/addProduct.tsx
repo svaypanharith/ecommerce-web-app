@@ -1,5 +1,5 @@
 "use client";
-import MInput from "../m-ui/m-input";
+import MInput from "../../components/m-ui/m-input";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";

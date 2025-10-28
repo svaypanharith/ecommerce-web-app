@@ -1,7 +1,7 @@
 "use client"
 
-import CardWrapper from "@/component/share/cardwrapper"
-import MInput from "@/component/m-ui/m-input"
+import CardWrapper from "@/components/share/cardwrapper"
+import MInput from "@/components/m-ui/m-input"
 
 export default function AddStorage(){
   return (

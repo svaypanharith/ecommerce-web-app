@@ -12,7 +12,9 @@ const dataSlice = createApi({
       return headers;
     },
   }),
+
   tagTypes: ["Storage", "Colors"],
+
   endpoints: (builder) => ({
    
     getStorages: builder.query<StorageResponse[], void>({

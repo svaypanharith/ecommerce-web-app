@@ -1,37 +1,19 @@
 "use client"
 
-import StorageTable from "@/component/dashboard/storage/storagetable"
+import StorageTable from "@/components/dashboard/storage/storagetable"
+import { useGetStoragesQuery } from "@/redux/slices/data-slices"
+import { useEffect } from "react"
+import { StorageColumns } from "@/components/dashboard/storage/storagecolumn"
 export default function Storage() {
-  const data = [
-    {
-      id: "1",
-      name: "128GB",
-      capacity: 128,
-      description: "Standard 128GB storage for smartphones",
-      status: "Active",
-    },
-    {
-      id: "2",
-      name: "256GB",
-      capacity: 256,
-      description: "High storage option for phones and laptops",
-      status: "Active",
-    },
-    {
-      id: "3",
-      name: "512GB",
-      capacity: 512,
-      description: "Large storage for heavy users",
-      status: "Inactive",
-    },
-    {
-      id: "4",
-      name: "1TB",
-      capacity: 1024,
-      description: "Top-tier storage for laptops",
-      status: "Active",
-    },
-  ]
+  const { data: storageData  , isLoading , error} = useGetStoragesQuery()
+
+
+
+
+const data = [
+
+]
+
 
   const columns = [
     {
@@ -68,8 +50,6 @@ export default function Storage() {
 
   
   return (
-    <StorageTable data={data} columns={columns} />  
+    <StorageTable data={storageData?.data|| data} columns={StorageColumns} />  
   )
-
-
 }

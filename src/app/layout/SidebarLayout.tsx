@@ -3,7 +3,7 @@
 import type React from "react";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import Header from "./header";
-import { AppSidebar } from "@/component/dashboard/appsidebar";
+import { AppSidebar } from "@/components/dashboard/appsidebar";
 
 interface SidebarLayoutProps {
   children: React.ReactNode;

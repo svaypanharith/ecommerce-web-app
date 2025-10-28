@@ -1,11 +1,11 @@
 "use client"
 
-import TableData from "@/component/sidebar/table"
+import TableData from "@/components/share/table"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 
 interface StorageDataProp {
-  data: [];
+  data?: [];
   columns: [];
 }
 

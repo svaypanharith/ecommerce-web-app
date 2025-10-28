@@ -2,7 +2,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import MInput from "@/component/m-ui/m-input";
+import MInput from "@/components/m-ui/m-input";
 
 export default function AddCategoryForm() {
   return (

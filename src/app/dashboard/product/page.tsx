@@ -1,10 +1,8 @@
 
-
-import DataTable from "@/component/product/productable"
-import { columns } from "@/component/product/productcolumn"
-
+import ProductTable from "@/component/product/productable"
+import { productColumns } from "@/component/product/productcolumn"
+import { ProductType } from "@/type/index"
 export default function ProductPage() {
-
     const data = [
         {
           id: "1",
@@ -36,6 +34,6 @@ export default function ProductPage() {
       ]
       
     return (
-            <DataTable columns={columns} data={data} />
+            <ProductTable columns={productColumns} data={data} />
     )
 }
