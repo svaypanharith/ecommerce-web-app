@@ -7,13 +7,15 @@ import {
 } from "@tanstack/react-table";
 import TableWrapper from "./tablewrapper";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Loader2 } from "lucide-react";
 
 interface TableDataProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  isLoading?: boolean;
 }
 
-export default function TableData<TData, TValue>({ columns, data }: TableDataProps<TData, TValue>) {
+export default function TableData<TData, TValue>({ columns, data ,isLoading }: TableDataProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
@@ -40,7 +42,16 @@ export default function TableData<TData, TValue>({ columns, data }: TableDataPro
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows.length ? (
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={columns.length}>
+
+                  <div className="w-full h-full flex justify-center items-center">
+                    <Loader2 className="w-14 h-14 text-center animate-spin" />
+                  </div>
+              </TableCell>
+            </TableRow>
+          ) : table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => (

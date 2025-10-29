@@ -18,12 +18,18 @@ export type Payment = {
   email: string
 }
 
-interface ProductType {
-   data: StorageResponse[]
+interface StorageType {
+  id: string;
+    name: string;
+        capacity: number;
+        description: string;
+        status: string;
+    
+
 }
 
 
-const ActionCell = ({ row, table }: { row: Row<ProductType>; table: Table<ProductType> }) => {
+const ActionCell = ({ row, table }: { row: Row<StorageResponse>; table: Table<StorageResponse> }) => {
   return (
     <div className="flex w-full justify-center">
       <DropdownMenu>
@@ -56,9 +62,10 @@ const ActionCell = ({ row, table }: { row: Row<ProductType>; table: Table<Produc
   );
 };
 
-export const StorageColumns: ColumnDef<{
- data: StorageResponse[]
-}>[] = [
+export const StorageColumns: ColumnDef<StorageType>[] = 
+
+
+[
     {
       header: "ID",
       accessorKey: "id",
@@ -70,6 +77,7 @@ export const StorageColumns: ColumnDef<{
       header: "Storage Name",
       accessorKey: "name",
       cell: ({ row }) => {
+          console.log("row.original" , row.original)
         return <div>{row.original?.name}</div>
       },
     },
@@ -77,6 +85,7 @@ export const StorageColumns: ColumnDef<{
       header: "Capacity (GB)",
       accessorKey: "capacity",
       cell: ({ row }) => {
+        
           return <div>{row.original?.capacity}</div>
       },
     },
@@ -92,7 +101,7 @@ export const StorageColumns: ColumnDef<{
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.original?.status || "active";
+      const status = row.original?.status|| "active";
       return (
         <span
           className={`px-3 py-1 rounded-full text-xs font-medium ${

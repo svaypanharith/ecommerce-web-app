@@ -1,6 +1,5 @@
-
-import ProductTable from "@/component/product/productable"
-import { productColumns } from "@/component/product/productcolumn"
+import ProductTable from "@/components/product/productable"
+import { productColumns } from "@/components/product/productcolumn"
 import { ProductType } from "@/type/index"
 export default function ProductPage() {
     const data = [

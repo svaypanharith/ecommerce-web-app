@@ -3,9 +3,9 @@
 export interface StorageResponse {
     id: string;
     name: string;
-    capacity: number;
-    description: string;
-    status: string;
+        capacity: number;
+        description: string;
+        status: string;
 }
 
 export interface ColorsResponse {

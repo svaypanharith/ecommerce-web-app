@@ -1,7 +1,7 @@
 "use client"
 
-import AddStorage from "@/component/dashboard/storage/addstorage"
-export default function addcategory(){
+import AddStorage from "@/components/dashboard/storage/addstorage"
+export default function AddStoragePage(){
   return (
      <AddStorage/>
  );

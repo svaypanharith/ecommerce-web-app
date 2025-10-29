@@ -1,7 +1,7 @@
 "use client";
 
-import CategoryTable from "@/component/dashboard/category/categorytable";
-import { columns } from "@/component/dashboard/category/categorycolumn";
+import CategoryTable from "@/components/dashboard/category/categorytable";
+import { columns } from "@/components/dashboard/category/categorycolumn";
 
 export default function CategoryPage() {
   const data = [

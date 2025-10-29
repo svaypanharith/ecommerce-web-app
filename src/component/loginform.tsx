@@ -11,7 +11,6 @@ export default function LoginForm() {
   const router = useRouter();
 
  const onSubmit = useCallback(() => {
-     console.log("Submit Test Data ")
      router.push("/dashboard");
  }, [router]);
 

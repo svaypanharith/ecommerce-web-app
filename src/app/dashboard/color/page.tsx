@@ -1,8 +1,6 @@
 "use client"
 
-import ColorTable from "@/component/dashboard/color/colortable"
-
-
+import ColorTable from "@/components/dashboard/color/colortable"
 
 export default function ColorPage(){
   const columns = [
@@ -29,32 +27,32 @@ export default function ColorPage(){
     {
       id: "3",
       name: "Black",
-      code: "#000000", // Black
+      code: "#000000", 
     },
     {
       id: "4",
       name: "White",
-      code: "#FFFFFF", // White
+      code: "#FFFFFF", 
     },
     {
       id: "5",
       name: "Blue",
-      code: "#0000FF", // Standard Blue
+      code: "#0000FF", 
     },
     {
       id: "6",
       name: "Green",
-      code: "#008000", // Standard Green
+      code: "#008000",
     },
     {
       id: "7",
       name: "Yellow",
-      code: "#FFFF00", // Pure Yellow
+      code: "#FFFF00", 
     },
     {
       id: "8",
       name: "Gray",
-      code: "#808080", // Gray
+      code: "#808080", 
     },
   ]
   return (
