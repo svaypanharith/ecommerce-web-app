@@ -70,7 +70,7 @@ export const StorageColumns: ColumnDef<StorageType>[] =
       header: "ID",
       accessorKey: "id",
       cell: ({ row }) => {
-        return <div>{row.original?.id}</div>
+        return <div>{row.index + 1}</div>
       },
     },
     {
