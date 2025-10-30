@@ -8,18 +8,38 @@ import {
 import TableWrapper from "./tablewrapper";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Loader2 } from "lucide-react";
+import { Row } from "@tanstack/react-table";
 
 interface TableDataProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   isLoading?: boolean;
+  onSelectedRow: ( row: Row<TData>) => void;
+  onOpenEditModal: () => void;
+  onOpenDeleteModal: () => void;
 }
 
-export default function TableData<TData, TValue>({ columns, data ,isLoading }: TableDataProps<TData, TValue>) {
+export interface TableMeta<TData> extends TableDataProps<TData, any> {
+  handleRowEditClick: (row: Row<TData>) => void;
+  handleRowDeleteClick: (row: Row<TData>) => void;
+}
+
+export default function TableData<TData>({ columns, data ,isLoading ,  onSelectedRow , onOpenEditModal , onOpenDeleteModal }:TableDataProps<TData , any>) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    meta: {
+      handleRowEditClick: (row: Row<TData>) => {
+        onSelectedRow(row);
+        onOpenEditModal();
+      },
+      handleRowDeleteClick: (row : Row<TData>) => {
+
+        onSelectedRow(row);
+        onOpenDeleteModal();
+      },
+    },
   });
 
   return (

@@ -10,6 +10,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { TableMeta } from "@/components/share/table"
+
 
 export type Payment = {
   id: string
@@ -24,10 +26,8 @@ interface StorageType {
         capacity: number;
         description: string;
         status: string;
-    
 
 }
-
 
 const ActionCell = ({ row, table }: { row: Row<StorageResponse>; table: Table<StorageResponse> }) => {
   return (
@@ -39,8 +39,8 @@ const ActionCell = ({ row, table }: { row: Row<StorageResponse>; table: Table<St
         <DropdownMenuContent className="shadow-xl rounded-lg">
           <DropdownMenuItem
             className="cursor-pointer text-primary"
-            onClick={() => {
-              console.log("edit")
+                        onClick={() => {
+              (table.options.meta as TableMeta<StorageResponse>)?.handleRowEditClick(row);
             }}
           >
             <Pencil className="size-4" />
@@ -50,7 +50,7 @@ const ActionCell = ({ row, table }: { row: Row<StorageResponse>; table: Table<St
           <DropdownMenuItem
             className="cursor-pointer text-red-500"
             onClick={() => {
-              console.log("delete")
+              (table.options.meta as TableMeta<StorageResponse>)?.handleRowDeleteClick(row);
             }}
           >
             <Trash className="size-4" />
@@ -77,7 +77,6 @@ export const StorageColumns: ColumnDef<StorageType>[] =
       header: "Storage Name",
       accessorKey: "name",
       cell: ({ row }) => {
-          console.log("row.original" , row.original)
         return <div>{row.original?.name}</div>
       },
     },
@@ -115,11 +114,10 @@ export const StorageColumns: ColumnDef<StorageType>[] =
       );
     },
   },
-   
         {
       header: "Actions",
       accessorKey: "actions",
-      cell: ({ row  , table}: any) => (
+      cell: ({ row  , table}: { row: Row<StorageResponse>; table: Table<StorageResponse> }) => (
         <ActionCell row={row} table={table} />
       ),
     },
